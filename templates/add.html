@@ -1,0 +1,109 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h1>Add a new cafe into the database</h1>
+        {{ wtf.quick_form(form, novalidate=True) }}
+	  <p class="space-above"><a class="btn btn-primary" href="{{ url_for('cafes') }}" role="button">See all cafes</a></p>
+    </div>
+  </div>
+</div>
+
+     <script>
+          document.addEventListener('DOMContentLoaded', () => {
+          const itemType = document.getElementById('item_type');
+          const coffeeRating = document.getElementById('coffee_rating');
+          const coffeeRatingLabel = document.querySelector('label[for="coffee_rating"]');
+          const coffeePrice = document.getElementById('coffee_price');
+          const coffeePriceLabel = document.querySelector('label[for="coffee_price"]');
+          const coffeeBeanName = document.getElementById('coffee_bean_name');
+          const coffeeBeanNameLabel = document.querySelector('label[for="coffee_bean_name"]');
+          const coffeeBeanRating = document.getElementById('coffee_bean_rating');
+          const coffeeBeanRatingLabel = document.querySelector('label[for="coffee_bean_rating"]');
+          const coffeeBeanPrice = document.getElementById('coffee_bean_price');
+          const coffeeBeanPriceLabel = document.querySelector('label[for="coffee_bean_price"]');
+          const coffeeType = document.getElementById('coffee_type');
+          const coffeeTypeLabel = document.querySelector('label[for="coffee_type"]');
+          const otherCoffee = document.getElementById('other_coffee');
+          const otherCoffeeLabel = document.querySelector('label[for="other_coffee"]');
+
+          coffeeRating.style.display = 'none';
+          coffeeRatingLabel.style.display = 'none';
+          coffeePrice.style.display = 'none';
+          coffeePriceLabel.style.display = 'none';
+          coffeeBeanName.style.display = 'none';
+          coffeeBeanNameLabel.style.display = 'none';
+          coffeeBeanRating.style.display = 'none';
+          coffeeBeanRatingLabel.style.display = 'none';
+          coffeeBeanPrice.style.display = 'none';
+          coffeeBeanPriceLabel.style.display = 'none';
+          coffeeType.style.display = 'none';
+          coffeeTypeLabel.style.display = 'none';
+          otherCoffee.style.display = 'none';
+          otherCoffeeLabel.style.display = 'none';
+
+          itemType.addEventListener('change', () => {
+            if (itemType.value === 'coffee_only') {
+              coffeeType.style.display = 'block';
+              coffeeTypeLabel.style.display = 'block';
+              coffeeRating.style.display = 'block';
+              coffeeRatingLabel.style.display = 'block';
+              coffeePrice.style.display = 'block';
+              coffeePriceLabel.style.display = 'block';
+              coffeeBeanName.style.display = 'none';
+              coffeeBeanNameLabel.style.display = 'none';
+              coffeeBeanRating.style.display = 'none';
+              coffeeBeanRatingLabel.style.display = 'none';
+              coffeeBeanPrice.style.display = 'none';
+              coffeeBeanPriceLabel.style.display = 'none';
+            } else if (itemType.value === 'beans_only') {
+              coffeeBeanName.style.display = 'block';
+              coffeeBeanNameLabel.style.display = 'block';
+              coffeeBeanRating.style.display = 'block';
+              coffeeBeanRatingLabel.style.display = 'block';
+              coffeeBeanPrice.style.display = 'block';
+              coffeeBeanPriceLabel.style.display = 'block';
+              coffeeType.style.display = 'none';
+              coffeeTypeLabel.style.display = 'none';
+              coffeeRating.style.display = 'none';
+              coffeeRatingLabel.style.display = 'none';
+              coffeePrice.style.display = 'none';
+              coffeePriceLabel.style.display = 'none';
+              otherCoffee.style.display = 'none';
+              otherCoffeeLabel.style.display = 'none';
+            } else if (itemType.value === 'coffee_and_beans') {
+              coffeeType.style.display = 'block';
+              coffeeTypeLabel.style.display = 'block';
+              coffeeRating.style.display = 'block';
+              coffeeRatingLabel.style.display = 'block';
+              coffeePrice.style.display = 'block';
+              coffeePriceLabel.style.display = 'block';
+              coffeeBeanName.style.display = 'block';
+              coffeeBeanNameLabel.style.display = 'block';
+              coffeeBeanRating.style.display = 'block';
+              coffeeBeanRatingLabel.style.display = 'block';
+              coffeeBeanPrice.style.display = 'block';
+              coffeeBeanPriceLabel.style.display = 'block';
+              }
+           });
+
+           coffeeType.addEventListener('change', () => {
+           if (coffeeType.value === 'other_drink') {
+              otherCoffee.style.display = 'block';
+              otherCoffeeLabel.style.display = 'block';
+            }
+          });
+        });
+        </script>
+
+{% endblock %}
